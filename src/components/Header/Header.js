@@ -1,34 +1,38 @@
 import './Header.css';
-import logo from "../../assets/logo.png";
-import {NavLink} from "react-router-dom";
+import {Link, Route, useParams} from "react-router-dom";
+import LogoContainer from "../LogoContainer/LogoContainer";
+import TitleContainer from "../TitleContainer/TitleContainer";
 
 function Header() {
+
     return (
         <div>
             <header className="outer-container">
                 <div className="inner-container">
 
                     <nav>
-                        <NavLink to="/">
-                            Home
-                        </NavLink>
-                        <NavLink to="/subreddit/:subredditId">
-                            Subreddit
-                        </NavLink>
+                        <ul className="header-navigation">
+                            <li>
+                                <Link className= "header-link" to="/">
+                                    HOTTEST POSTS
+                                </Link>
+                            </li>
+                            <li>
+                                <Link className= "header-link" to="/subreddit/:subredditId">
+                                    REDDIT
+                                </Link>
+                            </li>
+                            <li>
+                                <Link className= "header-link" to="/subreddit/memes">
+                                    MEMES
+                                </Link>
+                            </li>
+                        </ul>
                     </nav>
 
-                    {/*<nav>*/}
-                    {/*    <ul>*/}
-                    {/*        <li>HOTTEST POSTS</li>*/}
-                    {/*        <li>REDDIT</li>*/}
-                    {/*        <li>MEMES</li>*/}
-                    {/*    </ul>*/}
-                    {/*</nav>*/}
                     <div className="header-content">
-                        <img src={logo} className="logo" alt="logo" width={150} height={150}/>
-                        <h1>
-                            Reddit
-                        </h1>
+                        <Route path="/" exact component={LogoContainer} />
+                        <Route path="/subreddit" component={TitleContainer}/>
                     </div>
                 </div>
             </header>

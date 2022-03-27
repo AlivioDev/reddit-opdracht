@@ -1,7 +1,7 @@
 import './App.css';
 import {Switch, Route} from 'react-router-dom';
 import Home from "./pages/Home/Home";
-// import Subreddit from "./pages/Subreddit/Subreddit";
+import Subreddit from "./pages/Subreddit/Subreddit";
 import Header from "./components/Header/Header";
 
 function App() {
@@ -12,9 +12,9 @@ function App() {
         <Route exact path="/">
             <Home/>
         </Route>
-        {/*<Route path="/subreddit/:subredditId">*/}
-        {/*    <Subreddit/>*/}
-        {/*</Route>*/}
+        <Route path="/subreddit/:subredditId">
+            <Subreddit/>
+        </Route>
     </Switch>
     </>
   );
