@@ -2,6 +2,7 @@ import './Subreddit.css';
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {Link, useParams} from "react-router-dom";
+import NumberFormat from "../../helpers/NumberFormat";
 
 
 function Subreddit() {
@@ -26,6 +27,10 @@ function Subreddit() {
 
     return (
         <div className="subreddit-outer-container">
+            <div className="loader">
+                <div></div>
+            </div>
+
             {subreddit &&
                 <>
                     <div className="subreddit-inner-container">
@@ -36,7 +41,7 @@ function Subreddit() {
                         <h4 className= "paragraph-title">Description</h4>
                         <p className= "paragraph">{subreddit.description}</p>
                         <h4 className= "paragraph-title">Number of subscribers</h4>
-                        <p className= "paragraph">{subreddit.subscribers}</p>
+                        <p className= "paragraph">{NumberFormat((subreddit.subscribers))}</p>
                         <Link className="link-home" to="/"> &lt; Take me back</Link>
                     </div>
                 </>

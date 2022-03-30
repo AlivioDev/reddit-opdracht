@@ -2,6 +2,8 @@ import './Home.css';
 import axios from "axios";
 import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
+import NumberFormat from "../../helpers/NumberFormat";
+import LongTitlesTruncate from "../../helpers/LongTitelsTruncate";
 
 function Home() {
     const [reddits, setReddits] = useState(null);
@@ -21,8 +23,14 @@ function Home() {
         fetchReddit();
     }, []);
 
+
+
     return (
         <div className="body-outer-container">
+
+            <div className="loader">
+                <div></div>
+            </div>
 
             <div className="body-inner-container">
                 <div className="page-title">
@@ -37,14 +45,14 @@ function Home() {
                                 <ul className="post" key={post.data.id}>
                                     <li>
                                         <Link className="title" to={`subreddit/${post.data.subreddit}`}>
-                                            {post.data.title}
+                                            {LongTitlesTruncate((post.data.title))}
                                         </Link>
                                     </li>
                                     <li>
                                         <p className="bottom-data">
-                                            <a className="name" href={`${post.data.url}`} target="_blank" >{post.data.subreddit_name_prefixed}</a>
+                                            <a className="name" href={`${post.data.url}`} target="_blank" rel="noreferrer">{post.data.subreddit_name_prefixed}</a>
                                         </p>
-                                        <p className="stats">Comments {post.data.num_comments} - Ups {post.data.ups}</p>
+                                        <p className="stats">Comments {NumberFormat((post.data.num_comments))} - Ups {NumberFormat((post.data.ups))}</p>
                                     </li>
                                 </ul>
                             )
